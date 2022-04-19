@@ -9,7 +9,8 @@ float x,y,z, mag;
 int incomingByte = 0;
 bool alert = false;
 
-BLEService ledService("180A"); // BLE LED Service
+//BLEService ledService("180A"); // BLE LED Service
+BLEService ledService("b244ec7e-2957-4b0f-93a4-e5fa3d13a492"); // BLE LED Service
 BLEByteCharacteristic switchCharacteristic("2A57", BLERead | BLEWrite);
 
 
@@ -41,6 +42,17 @@ void setup() {
   
 }
 
+int getMag() {
+  if (IMU.accelerationAvailable()) 
+        IMU.readAcceleration(x, y, z);
+  
+  mag = sqrt(x*x + y*y + z*z);
+      
+  Serial.print("Mag:"); Serial.println(mag*100);
+
+  return mag*100;
+}
+
 void loop() {
   // listen for Bluetooth® Low Energy peripherals to connect:
   BLEDevice central = BLE.central();
@@ -60,7 +72,7 @@ void loop() {
       else
         digitalWrite(LED_BUILTIN, LOW);
 
-      // disarm from app
+//       disarm from app
       if (switchCharacteristic.written()) {
         if (!switchCharacteristic.value()) {   // value 0
           alert = false;         // will turn the LED off
@@ -75,26 +87,11 @@ void loop() {
         Serial.println("alert");
         alert = true;
       } 
-//      else if (Serial.available() > 0) {
-//        incomingByte = Serial.read();
-//        if (incomingByte == 65) {
-//          // disarm
-//          Serial.println("disarming");
-//          alert = false;
-//        }
-//      }
+
     }
   }
+  else {
+    Serial.println("Disconnected...");
+  }
   delay(100);
-}
-
-int getMag() {
-  if (IMU.accelerationAvailable()) 
-        IMU.readAcceleration(x, y, z);
-  
-  mag = sqrt(x*x + y*y + z*z);
-      
-  Serial.print("Mag:"); Serial.println(mag*100);
-
-  return mag*100;
 }
