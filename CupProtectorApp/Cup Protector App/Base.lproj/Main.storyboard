@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Miy-kh-NCP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -16,65 +16,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cup Protector Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1q-7G-a4q">
-                                <rect key="frame" x="20" y="114" width="374" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cup Protector Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1q-7G-a4q">
+                                <rect key="frame" x="51" y="114" width="312" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2j-VU-uxL">
-                                <rect key="frame" x="20" y="208" width="374" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-sv-GDr">
+                                <rect key="frame" x="161" y="220" width="92" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOF-Xg-9kV">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUO-Wq-VmR">
+                                        <rect key="frame" x="68" y="0.0" width="24" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2j-VU-uxL">
+                                <rect key="frame" x="179" y="188" width="56.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvM-Kh-eRP">
-                                <rect key="frame" x="95" y="286" width="225" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Connect Device"/>
-                                <connections>
-                                    <action selector="ConnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9G5-s7-afW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-Uy-hWM">
-                                <rect key="frame" x="95" y="376" width="225" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Arm"/>
-                                <connections>
-                                    <action selector="ArmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5G-eb-tFn"/>
-                                    <action selector="ArmChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3ef-xd-1Ab"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-8n-Dou">
-                                <rect key="frame" x="95" y="465" width="225" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Disarm"/>
-                                <connections>
-                                    <action selector="DisarmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qzp-Hw-XlH"/>
-                                    <action selector="DisarmChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zNx-hF-Dhy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YO-fi-aAY">
-                                <rect key="frame" x="95" y="552" width="225" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Disconnect"/>
-                                <connections>
-                                    <action selector="DisconnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VfS-Rq-urn"/>
-                                    <action selector="DisconnectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Otx-h5-0nZ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="YaY-hc-Lkr">
+                                <rect key="frame" x="144" y="354.5" width="126.5" height="187"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvM-Kh-eRP">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Connect Device"/>
+                                        <connections>
+                                            <action selector="ConnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9G5-s7-afW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-Uy-hWM">
+                                        <rect key="frame" x="0.0" y="52" width="127" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Arm"/>
+                                        <connections>
+                                            <action selector="ArmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5G-eb-tFn"/>
+                                            <action selector="ArmChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3ef-xd-1Ab"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-8n-Dou">
+                                        <rect key="frame" x="0.0" y="104" width="127" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Disarm"/>
+                                        <connections>
+                                            <action selector="DisarmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qzp-Hw-XlH"/>
+                                            <action selector="DisarmChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zNx-hF-Dhy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YO-fi-aAY">
+                                        <rect key="frame" x="0.0" y="156" width="127" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Disconnect"/>
+                                        <connections>
+                                            <action selector="DisconnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VfS-Rq-urn"/>
+                                            <action selector="DisconnectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Otx-h5-0nZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P2j-VU-uxL" firstAttribute="top" secondItem="R1q-7G-a4q" secondAttribute="bottom" constant="38" id="5qN-C1-I72"/>
+                            <constraint firstItem="P2j-VU-uxL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9C3-vD-n4E"/>
+                            <constraint firstItem="Mau-sv-GDr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MNg-l5-qci"/>
+                            <constraint firstItem="YaY-hc-Lkr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fMq-Kk-Orx"/>
+                            <constraint firstItem="Mau-sv-GDr" firstAttribute="top" secondItem="P2j-VU-uxL" secondAttribute="bottom" constant="8" id="rpb-PO-DGP"/>
+                            <constraint firstItem="R1q-7G-a4q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="tzd-sF-1CN"/>
+                            <constraint firstItem="R1q-7G-a4q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wRr-Ud-hVu"/>
+                            <constraint firstItem="YaY-hc-Lkr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yCB-Rl-gVr"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Cfr-kX-7xA"/>
                     <connections>
                         <outlet property="ArmButton" destination="BDY-Uy-hWM" id="6Xa-V8-n8A"/>
+                        <outlet property="BatteryPercentageLabel" destination="JUO-Wq-VmR" id="AiX-fV-GQd"/>
                         <outlet property="ConnectButton" destination="GvM-Kh-eRP" id="fvj-8D-mwF"/>
                         <outlet property="DisarmButton" destination="fIa-8n-Dou" id="mJy-z9-0qe"/>
                         <outlet property="DisconnectButton" destination="9YO-fi-aAY" id="hND-mQ-RhK"/>
@@ -82,6 +110,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023.1884057971015" y="51.5625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6gj-4f-vpk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Miy-kh-NCP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cr2-wM-Ir9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AUu-jr-uyY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Sy-8d-G8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.04347826086958" y="51.5625"/>
         </scene>

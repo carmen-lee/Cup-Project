@@ -20,9 +20,11 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     @IBOutlet weak var ArmButton: UIButton!
     @IBOutlet weak var DisarmButton: UIButton!
     @IBOutlet weak var DisconnectButton: UIButton!
+    @IBOutlet weak var BatteryPercentageLabel: UILabel!
     
     // Characteristics
     private var toggle: CBCharacteristic?
+    private var battChar: CBCharacteristic?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +38,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         if central.state != .poweredOn {
             print("Central is not powered on")
         } else {
-            print("Central scanning for", ParticlePeripheral.arduinoUUID);
-            centralManager.scanForPeripherals(withServices: [ParticlePeripheral.arduinoUUID],
+            print("Central scanning for", ParticlePeripheral.ledServiceUUID);
+            centralManager.scanForPeripherals(withServices: [ParticlePeripheral.ledServiceUUID],
                                               options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
         }
     }
@@ -62,7 +64,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         if peripheral == self.peripheral {
             StatusLabel.text = "Connected"
             print("Connected to your Arduino")
-            peripheral.discoverServices([ParticlePeripheral.arduinoUUID])
+            print(peripheral)
+            peripheral.discoverServices([ParticlePeripheral.ledServiceUUID, ParticlePeripheral.batteryServiceUUID])
             
             ConnectButton.isEnabled = false
             DisconnectButton.isEnabled = true
@@ -73,11 +76,17 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for service in services {
-                if service.uuid == ParticlePeripheral.arduinoUUID {
-                    print("Service found")
+                if service.uuid == ParticlePeripheral.ledServiceUUID {
+                    print("Read/Write Service found")
                     //Now kick off discovery of characteristics
-                    peripheral.discoverCharacteristics([ParticlePeripheral.readwriteUUID], for: service)
-                    return
+                    peripheral.discoverCharacteristics([ParticlePeripheral.readwriteCharacteristicUUID], for: service)
+//                    return
+                }
+                if service.uuid == ParticlePeripheral.batteryServiceUUID {
+                    print("Battery Service found")
+                    //Now kick off discovery of characteristics
+                    peripheral.discoverCharacteristics([ParticlePeripheral.batteryCharacteristicUUID], for: service)
+//                    return
                 }
             }
         }
@@ -87,15 +96,32 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let characteristics = service.characteristics {
             for characteristic in characteristics {
-                if characteristic.uuid == ParticlePeripheral.readwriteUUID {
+                if characteristic.uuid == ParticlePeripheral.readwriteCharacteristicUUID {
                     print("Read/Write value characteristic found")
                     ArmButton.isEnabled = false     // currently has no action
                     DisarmButton.isEnabled = true
                     toggle = characteristic
                 }
+                else if characteristic.uuid == ParticlePeripheral.batteryCharacteristicUUID {
+                    print("Batttery characteristic found")
+                    battChar = characteristic
+                    peripheral.setNotifyValue(true, for: characteristic)
+
+                }
             }
         }
     }
+    
+    func peripheral(_ peripheral: CBPeripheral,
+                         didUpdateValueFor characteristic: CBCharacteristic,
+                         error: Error?) {
+
+        if( characteristic == battChar ) {
+            BatteryPercentageLabel.text = "\(characteristic.value![0])%"
+        }
+
+    }
+
     
     // starts finding service when pressed
     @IBAction func ConnectButton(_ sender: Any) {
@@ -132,7 +158,6 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     }
     
     // need notification to check if ble connection is still alive
-
     
 };
 
