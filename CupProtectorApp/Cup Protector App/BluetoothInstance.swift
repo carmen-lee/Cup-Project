@@ -1,36 +1,18 @@
 //
-//  ViewController.swift
+//  BluetoothInstance.swift
 //  Cup Protector App
 //
-//  Created by Carmen Lee on 4/17/22.
+//  Created by Carmen Lee on 5/4/22.
 //
 
-import UIKit
+import Foundation
 import CoreBluetooth
 
-class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDelegate {
+class BluetoothInstance: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
 
     // Properties
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
-    
-    // Objects
-    @IBOutlet weak var StatusLabel: UILabel!
-    @IBOutlet weak var ConnectButton: UIButton!
-    @IBOutlet weak var ArmButton: UIButton!
-    @IBOutlet weak var DisarmButton: UIButton!
-    @IBOutlet weak var DisconnectButton: UIButton!
-    @IBOutlet weak var BatteryPercentageLabel: UILabel!
-    
-    // Characteristics
-    private var toggle: CBCharacteristic?
-    private var battChar: CBCharacteristic?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        StatusLabel.text = "Hello"
-    }
     
     // If we're powered on, start scanning
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -121,45 +103,12 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
 
         if( characteristic == battChar ) {
             BatteryPercentageLabel.text = "\(characteristic.value![0])%"
+            return characteristic.value![0]
         }
 
     }
 
-    // starts finding service when pressed
-    @IBAction func ConnectButton(_ sender: Any) {
-        StatusLabel.text = "Finding device..."
-        centralManager = CBCentralManager(delegate: self, queue: nil);
-    }
-    
-    @IBAction func ArmButton(_ sender: Any) {
-        // doesn't do anything right now
-    }
-    
-    // turn light off when pressed
-    @IBAction func DisarmButton(_ sender: Any) {
-        let bytes : [UInt8] = [ 0x00 ]      // hex value of 0(src.ino) will turn the light off
-        let data = NSData(bytes: bytes, length: bytes.count)
-        peripheral.writeValue(data as Data, for: toggle!, type: CBCharacteristicWriteType.withResponse)
-
-    }
-    
-    // disconnects device
-    @IBAction func DisconnectButton(_ sender: Any) {
-        StatusLabel.text = "Disconnecting..."
-        centralManager.cancelPeripheralConnection(peripheral)
-        
-        print("Disconnected") 
-        StatusLabel.text = "Hello"
-        self.peripheral = nil
-        
-        ConnectButton.isEnabled = true
-        ArmButton.isEnabled = false
-        DisarmButton.isEnabled = false
-        DisconnectButton.isEnabled = false
-        
-    }
-    
-    // need notification to check if ble connection is still alive
-    
 };
+
+let sharedBluetoothInstance = BluetoothInstance()
 

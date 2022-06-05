@@ -17,6 +17,7 @@
 		FC9B5970280CDD8500905631 /* Cup_Protector_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9B596F280CDD8500905631 /* Cup_Protector_AppUITests.swift */; };
 		FC9B5972280CDD8500905631 /* Cup_Protector_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9B5971280CDD8500905631 /* Cup_Protector_AppUITestsLaunchTests.swift */; };
 		FC9B597F280CE09100905631 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9B597E280CE09100905631 /* Peripheral.swift */; };
+		FCE73F2A28235FC20061A484 /* BluetoothInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE73F2928235FC20061A484 /* BluetoothInstance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		FC9B596F280CDD8500905631 /* Cup_Protector_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup_Protector_AppUITests.swift; sourceTree = "<group>"; };
 		FC9B5971280CDD8500905631 /* Cup_Protector_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup_Protector_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FC9B597E280CE09100905631 /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		FCE73F2928235FC20061A484 /* BluetoothInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothInstance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				FC9B594E280CDD8100905631 /* AppDelegate.swift */,
 				FC9B5950280CDD8100905631 /* SceneDelegate.swift */,
 				FC9B5952280CDD8100905631 /* ViewController.swift */,
+				FCE73F2928235FC20061A484 /* BluetoothInstance.swift */,
 				FC9B597E280CE09100905631 /* Peripheral.swift */,
 				FC9B5954280CDD8100905631 /* Main.storyboard */,
 				FC9B5957280CDD8400905631 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE73F2A28235FC20061A484 /* BluetoothInstance.swift in Sources */,
 				FC9B5953280CDD8100905631 /* ViewController.swift in Sources */,
 				FC9B594F280CDD8100905631 /* AppDelegate.swift in Sources */,
 				FC9B5951280CDD8100905631 /* SceneDelegate.swift in Sources */,
