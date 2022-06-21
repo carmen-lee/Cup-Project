@@ -92,7 +92,7 @@ void loop() {
       // checks if alert should be on
       if (alert) {
         digitalWrite(LED_BUILTIN, HIGH);    // turn on LED
-        buzzerON();     // turn on buzzers
+        buzzerON();     // turn on buzzers <- THIS AFFECTS HOW 'Disarm' BUTTON IS READ
       } else {
         digitalWrite(LED_BUILTIN, LOW);   // turn off LED
         buzzerOFF();    // turn off buzzer
@@ -106,7 +106,7 @@ void loop() {
       }
 
       long currentMillis = millis();
-      if (currentMillis - previousMillis >= 200) {    // if 200ms have passed, check the battery level:
+      if (currentMillis - previousMillis >= 1000) {    // if 200ms have passed, check the battery level:
         previousMillis = currentMillis;
         updateBatteryLevel();
       }
@@ -125,7 +125,7 @@ void loop() {
   else {
     Serial.println("Disconnected...");
   }
-  delay(100); // how will delay affect alert
+//  delay(100); // how will delay affect alert
 }
 
 
@@ -147,7 +147,7 @@ void updateBatteryLevel() {
   int batteryLevel = map(battery, 0, 1023, 0, 100);
 
   if (batteryLevel != oldBatteryLevel) {      // if the battery level has changed
-    Serial.print("Battery Level % is now: "); // print it
+    Serial.print("Battery Level %: "); // print it
     Serial.println(batteryLevel);
     batteryLevelChar.writeValue(batteryLevel);  // and update the battery level characteristic
     oldBatteryLevel = batteryLevel;           // save the level for next comparison
